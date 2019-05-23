@@ -1,0 +1,179 @@
+Film "image"
+  "string filename" ["rocket.exr"]
+# "integer xresolution" [125]
+# "integer yresolution" [225]
+  "integer xresolution" [100]
+  "integer yresolution" [100]
+
+Sampler "halton" "integer pixelsamples" [4096] 
+
+Integrator "bdpt"
+
+# Coordinate system:
+# Rocket base is at origin.
+# +Z is TOWARDS SPACE.
+# +Y is TOWARDS SUN / HILL
+
+MakeNamedMedium "exhaust" "string type" "homogeneous" "rgb sigma_a" [ 0.015 0.015 0.015 ] "rgb sigma_s" [ 1 1 1 ]
+MediumInterface "" ""
+
+#LookAt
+#  -3 -3 3
+#  0 0 3
+#  0 0 1
+
+LookAt
+  -3 -7 1 # camera position
+  -2  0 8   # look at this point
+  0 0 1   # +Z = "up"
+Camera "perspective"
+  "float fov" [100]
+  "float lensradius" [0.1]
+  "float focaldistance" [10]
+
+WorldBegin
+
+#AttributeBegin
+#  Material "metal"
+#  Translate 0 0 3
+#  Include "rocket-model.pbrt"
+#AttributeEnd
+
+ObjectBegin "fin"
+  AttributeBegin
+    Material "metal" "spectrum k" [ 1 1 ] "spectrum eta" [ 0.1 0.1 ]
+    Shape "trianglemesh"
+      "point P" [
+        -0.02 -1 0   -0.02 -2 0.2   -0.02 -1 1.5
+        +0.02 -1 0   +0.02 -2 0.2   +0.02 -1 1.5
+      ]
+      "integer indices" [
+        0 1 2
+        3 4 5
+      ]
+  AttributeEnd
+ObjectEnd
+
+AttributeBegin
+  Material "metal" "spectrum k" [ 1 1 ] "spectrum eta" [ 0.1 0.1 ]
+  Translate 0 0 6
+
+# airframe
+  Shape "cylinder" "float radius" [1]   "float zmin" [0] "float zmax" [20]
+
+# motor
+  AttributeBegin
+    MediumInterface "exhaust" ""
+
+    AttributeBegin
+      Material "none"
+      Shape "cylinder" "float zmin" -5 "float zmax" 20
+      Shape "disk"
+
+      AttributeBegin
+        Translate 0 0 -5
+        Scale 1 1 -1
+        Shape "disk"
+      AttributeEnd
+    AttributeEnd
+
+    AttributeBegin
+      AreaLightSource "diffuse" "rgb L" [ 300 90 0 ]
+      ReverseOrientation
+      Shape "cylinder" "float radius" [0.3] "float zmin" [5] "float zmax" [20]
+    AttributeEnd
+  AttributeEnd
+
+# motor retainer
+  Shape "disk" "float radius" [1] "float innerradius" [0.3]
+
+# nose cone
+  AttributeBegin
+    Translate 0 0 20
+    Translate 0 0 5
+    Scale 1 1 -1
+    Shape "paraboloid" "float radius" [1] "float zmax" [5]
+  AttributeEnd
+
+# fins
+  AttributeBegin
+    Rotate 120 0 0 1
+    ObjectInstance "fin"
+    Rotate 120 0 0 1
+    ObjectInstance "fin"
+    Rotate 120 0 0 1
+    ObjectInstance "fin"
+  AttributeEnd
+
+# exhaust
+  AttributeBegin
+  AttributeEnd
+
+AttributeEnd
+
+
+
+
+
+
+
+
+# HILLS OMG
+Include "hill.pbrt"
+AttributeBegin
+  # hill
+  Material "matte" "rgb Kd" [ .93 .79 .68 ]
+  Translate 0 2000 0
+  Scale 3000 100 200
+  Translate -0.5 -0.5 0
+  ObjectInstance "hill1"
+AttributeEnd
+
+Include "hill.pbrt"
+AttributeBegin
+  # hill
+  Material "matte" "rgb Kd" [ .93 .79 .68 ]
+  Translate 1500 3000 0
+  Scale 3000 100 200
+  Translate -0.5 -0.5 0
+  ObjectInstance "hill1"
+AttributeEnd
+
+Include "hill.pbrt"
+AttributeBegin
+  # hill
+  Material "matte" "rgb Kd" [ .93 .79 .68 ]
+  Translate 3000 2000 0
+  Scale 3000 100 200
+  Translate -0.5 -0.5 0
+  ObjectInstance "hill1"
+AttributeEnd
+
+Include "hill.pbrt"
+AttributeBegin
+  # hill
+  Material "matte" "rgb Kd" [ .93 .79 .68 ]
+  Translate -1500 3000 0
+  Scale 3000 100 200
+  Translate -0.5 -0.5 0
+  ObjectInstance "hill1"
+AttributeEnd
+
+
+
+
+
+# SKY and GROUND
+
+LightSource "infinite" "string mapname" "sky.exr"
+
+AttributeBegin
+  Rotate 90 1 0 0
+  Material "matte" "rgb Kd" [ .93 .79 .68 ]
+
+  Shape "trianglemesh"
+      "point P" [ -10000 0 -10000  10000 0 -10000  10000 0 10000  -10000 0 10000 ]
+      "integer indices" [ 0 1 2 0 2 3 ]
+AttributeEnd
+
+WorldEnd
