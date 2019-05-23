@@ -2,10 +2,10 @@ Film "image"
   "string filename" ["rocket.exr"]
 # "integer xresolution" [125]
 # "integer yresolution" [225]
-  "integer xresolution" [100]
-  "integer yresolution" [100]
+  "integer xresolution" [200]
+  "integer yresolution" [200]
 
-Sampler "halton" "integer pixelsamples" [4096] 
+Sampler "halton" "integer pixelsamples" [8192] 
 
 Integrator "bdpt"
 
@@ -14,18 +14,19 @@ Integrator "bdpt"
 # +Z is TOWARDS SPACE.
 # +Y is TOWARDS SUN / HILL
 
-MakeNamedMedium "exhaust" "string type" "homogeneous" "rgb sigma_a" [ 0.015 0.015 0.015 ] "rgb sigma_s" [ 1 1 1 ]
+Include "exhaust.pbrt"
 MediumInterface "" ""
 
 #LookAt
-#  -3 -3 3
-#  0 0 3
+#  -3 -3 6
+#  0 0 6
 #  0 0 1
 
 LookAt
   -3 -7 1 # camera position
   -2  0 8   # look at this point
   0 0 1   # +Z = "up"
+
 Camera "perspective"
   "float fov" [100]
   "float lensradius" [0.1]
@@ -44,8 +45,8 @@ ObjectBegin "fin"
     Material "metal" "spectrum k" [ 1 1 ] "spectrum eta" [ 0.1 0.1 ]
     Shape "trianglemesh"
       "point P" [
-        -0.02 -1 0   -0.02 -2 0.2   -0.02 -1 1.5
-        +0.02 -1 0   +0.02 -2 0.2   +0.02 -1 1.5
+        -0.02 -1 0   -0.02 -2.5 -0.2   -0.02 -1 2.0
+        +0.02 -1 0   +0.02 -2.5 -0.2   +0.02 -1 2.0
       ]
       "integer indices" [
         0 1 2
