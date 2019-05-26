@@ -5,7 +5,7 @@ Film "image"
   "integer xresolution" [200]
   "integer yresolution" [200]
 
-Sampler "halton" "integer pixelsamples" [8192] 
+Sampler "halton" "integer pixelsamples" [256] 
 
 Integrator "bdpt"
 
@@ -16,11 +16,6 @@ Integrator "bdpt"
 
 Include "exhaust.pbrt"
 MediumInterface "" ""
-
-#LookAt
-#  -3 -3 6
-#  0 0 6
-#  0 0 1
 
 LookAt
   -3 -7 1 # camera position
@@ -60,7 +55,7 @@ AttributeBegin
   Translate 0 0 6
 
 # airframe
-  Shape "cylinder" "float radius" [1]   "float zmin" [0] "float zmax" [20]
+  Shape "cylinder" "float radius" [1]   "float zmin" [0] "float zmax" [6]
 
 # motor
   AttributeBegin
@@ -68,7 +63,7 @@ AttributeBegin
 
     AttributeBegin
       Material "none"
-      Shape "cylinder" "float zmin" -5 "float zmax" 20
+      Shape "cylinder" "float radius" 0.9 "float zmin" -5 "float zmax" 6
       Shape "disk"
 
       AttributeBegin
@@ -81,7 +76,7 @@ AttributeBegin
     AttributeBegin
       AreaLightSource "diffuse" "rgb L" [ 300 90 0 ]
       ReverseOrientation
-      Shape "cylinder" "float radius" [0.3] "float zmin" [5] "float zmax" [20]
+      Shape "cylinder" "float radius" [0.3] "float zmin" [1] "float zmax" [5]
     AttributeEnd
   AttributeEnd
 
@@ -90,7 +85,7 @@ AttributeBegin
 
 # nose cone
   AttributeBegin
-    Translate 0 0 20
+    Translate 0 0 6
     Translate 0 0 5
     Scale 1 1 -1
     Shape "paraboloid" "float radius" [1] "float zmax" [5]
@@ -104,10 +99,6 @@ AttributeBegin
     ObjectInstance "fin"
     Rotate 120 0 0 1
     ObjectInstance "fin"
-  AttributeEnd
-
-# exhaust
-  AttributeBegin
   AttributeEnd
 
 AttributeEnd
