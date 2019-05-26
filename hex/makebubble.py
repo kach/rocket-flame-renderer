@@ -47,7 +47,7 @@ def make_dome(R, num_samples):
     AttributeEnd
     ''' % (x, y, z, p, q, r))
 
-make_dome(6.0, 2 ** 20)
+make_dome(6.0, 2 ** 22)
 
 f.write('WorldEnd')
 f.close()
