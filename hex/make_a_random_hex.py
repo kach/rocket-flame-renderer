@@ -1,7 +1,7 @@
 import numpy as np
 
 x = np.random.random() * 180
-y = np.random.random() * 180
+y = np.random.random() * 180 - 90
 z = np.random.random() * 60
 seed = np.random.randint(0xdeadbeef)
 
@@ -22,4 +22,4 @@ with open('tmp/' + name, 'w') as g:
 
 import os
 
-os.system('cd tmp/; ../../../rocket-pbrt/build/pbrt %s' % name)
+os.system('cd tmp/; ../../../rocket-pbrt/build/pbrt --quiet %s; rm %s' % (name, name))

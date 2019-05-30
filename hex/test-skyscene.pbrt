@@ -1,0 +1,27 @@
+Film "image"
+  "string filename" "test-skyscene.exr"
+  "integer xresolution" 300
+  "integer yresolution" 300
+
+Sampler "halton" "integer pixelsamples" 30
+Integrator "path"
+
+LookAt
+ 10   0  0
+  0   0  0
+  0   0  1
+
+Camera "perspective" "float fov" 90
+
+WorldBegin
+  LightSource "infinite" "string mapname" "undirmap-scaled.exr"
+
+  Include "hex.pbrt"
+  AttributeBegin
+    Rotate  0 1 0 0 # X -90 -- 90
+    Rotate  0 0 1 0 # Y -90 -- 90
+    Rotate  0 0 0 1 # Z   0 -- 60
+    ObjectInstance "hex"
+  AttributeEnd
+
+WorldEnd

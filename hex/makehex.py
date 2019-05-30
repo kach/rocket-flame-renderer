@@ -10,7 +10,7 @@ H2 = [ (math.cos(math.pi * 2 * t / N), math.sin(math.pi * 2 * t / N), -h) for t 
 with open('hex.pbrt', 'w') as f:
     f.write('ObjectBegin "hex"\n')
     f.write('  AttributeBegin\n')
-    f.write('  Material "glass" "float eta" 1.31 "spectrum Kr" [0.0 0.0]\n')
+    f.write('  Material "glass" "float eta" 1.31\n')
     f.write('  Shape "trianglemesh"\n')
 
     f.write('  "point P" [\n')

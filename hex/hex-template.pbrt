@@ -3,14 +3,15 @@ Film "image"
   "integer xresolution" 100
   "integer yresolution" 100
 
-Sampler "halton" "integer pixelsamples" 1 "integer seed" {SEED}
+Sampler "halton" "integer pixelsamples" 2 "integer seed" {SEED}
 Integrator "path"
-Camera "orthographic" "float screenwindow" [ -2 2 -2 2 ]
 
 LookAt
-  0 -10 0
-  0   0 0
-  0   0 1
+   10   0 0
+    0   0 0
+    0   0 1
+
+Camera "orthographic" "float screenwindow" [ -2 2 -2 2 ]
 
 WorldBegin
   LightSource "infinite" "string mapname" "../dirmap.exr"
