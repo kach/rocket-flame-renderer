@@ -1,0 +1,26 @@
+Film "image"
+  "string filename" "hex-{XROT}-{YROT}-{ZROT}-{SEED}.exr"
+  "integer xresolution" 100
+  "integer yresolution" 100
+
+Sampler "halton" "integer pixelsamples" 1 "integer seed" {SEED}
+Integrator "path"
+Camera "orthographic" "float screenwindow" [ -2 2 -2 2 ]
+
+LookAt
+  0 -10 0
+  0   0 0
+  0   0 1
+
+WorldBegin
+  LightSource "infinite" "string mapname" "../dirmap.exr"
+
+  Include "../hex.pbrt"
+  AttributeBegin
+    Rotate  {XROT} 1 0 0 # X -90 -- 90
+    Rotate  {YROT} 0 1 0 # Y -90 -- 90
+    Rotate  {ZROT} 0 0 1 # Z   0 -- 60
+    ObjectInstance "hex"
+  AttributeEnd
+
+WorldEnd
