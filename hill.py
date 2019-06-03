@@ -3,7 +3,7 @@ import numpy as np
 import sys
 np.set_printoptions(threshold=sys.maxsize)
 
-u, v = (10, 10)
+u, v = (16, 16)
 
 grid = np.zeros((u, v))
 
