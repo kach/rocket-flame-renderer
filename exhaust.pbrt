@@ -6,7 +6,7 @@ MakeNamedMedium "exhaust"
   "integer nx" [ 8 ]
   "integer ny" [ 8 ]
   "integer nz" [ 20 ]
-  "point p0" [ -1 -1 0 ]
+  "point p0" [ -1 -1 4 ]
   "point p1" [  1  1 25 ]
   "float density" [0.         0.         0.         0.         0.         0.
  0.         0.         0.         0.         0.         0.

@@ -35,7 +35,7 @@ MakeNamedMedium "exhaust"
   "integer nx" [ %d ]
   "integer ny" [ %d ]
   "integer nz" [ %d ]
-  "point p0" [ -1 -1 0 ]
+  "point p0" [ -1 -1 4 ]
   "point p1" [  1  1 %d ]
   "float density" %s
 ''' % (u, v, w, h, np.array2string(grid.flatten('F'))))
