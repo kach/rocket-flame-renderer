@@ -5,7 +5,7 @@ Film "image"
   "integer xresolution" [320]
   "integer yresolution" [180]
 
-Sampler "halton" "integer pixelsamples" [32] 
+Sampler "halton" "integer pixelsamples" [1048576]
 
 Integrator "volpath"
 
