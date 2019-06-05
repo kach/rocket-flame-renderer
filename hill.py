@@ -3,7 +3,7 @@ import numpy as np
 import sys
 np.set_printoptions(threshold=sys.maxsize)
 
-u, v = (16, 16)
+u, v = (18, 18)
 
 grid = np.zeros((u, v))
 
@@ -13,7 +13,7 @@ for i in range(u):
             grid[i, j] = 0
             continue
         x, y = i / u - 0.5, j / v - 0.5
-        grid[i, j] = np.exp(-np.power(np.sqrt(x**2 + y**2), 2.) / (0.05 * np.power(1, 2.))) + np.random.random() / 3
+        grid[i, j] = np.exp(-(x**2 + y**2) / (2 * 0.2 ** 2)) / (0.2 * np.sqrt(np.pi * 2)) + np.random.random() * 1.5
 
 with open('hill.pbrt', 'w') as f:
     f.write('''
