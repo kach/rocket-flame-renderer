@@ -187,71 +187,26 @@ AttributeEnd
 
 
 
-# AttributeBegin
-#   Material "matte" "rgb Kd" [ .93 .79 .68 ]
-#   Translate 1500 3000 0
-#   Scale 3000 100 200
-#   Translate -0.5 -0.5 0
-#   ObjectInstance "hill1"
-# AttributeEnd
-# 
-# AttributeBegin
-#   Material "matte" "rgb Kd" [ .93 .79 .68 ]
-#   Translate 3000 2000 0
-#   Scale 3000 100 200
-#   Translate -0.5 -0.5 0
-#   ObjectInstance "hill1"
-# AttributeEnd
-# 
-# AttributeBegin
-#   Material "matte" "rgb Kd" [ .93 .79 .68 ]
-#   Translate 4500 3000 0
-#   Scale 3000 100 200
-#   Translate -0.5 -0.5 0
-#   ObjectInstance "hill1"
-# AttributeEnd
-# 
-# AttributeBegin
-#   Material "matte" "rgb Kd" [ .93 .79 .68 ]
-#   Translate 6000 2000 0
-#   Scale 3000 100 200
-#   Translate -0.5 -0.5 0
-#   ObjectInstance "hill1"
-# AttributeEnd
-# 
-# AttributeBegin
-#   Material "matte" "rgb Kd" [ .93 .79 .68 ]
-#   Translate -1500 3000 0
-#   Scale 3000 100 200
-#   Translate -0.5 -0.5 0
-#   ObjectInstance "hill1"
-# AttributeEnd
-# 
-# AttributeBegin
-#   Material "matte" "rgb Kd" [ .93 .79 .68 ]
-#   Translate -3000 2000 0
-#   Scale 3000 100 200
-#   Translate -0.5 -0.5 0
-#   ObjectInstance "hill1"
-# AttributeEnd
-# 
-# AttributeBegin
-#   Material "matte" "rgb Kd" [ .93 .79 .68 ]
-#   Translate -4500 3000 0
-#   Scale 3000 100 200
-#   Translate -0.5 -0.5 0
-#   ObjectInstance "hill1"
-# AttributeEnd
+# WINDSOCK
+
+AttributeBegin
+  Translate -30 100 0
+  Shape "cylinder"
+    "float radius" 0.5
+    "float zmin" 0
+    "float zmax" 30
+  AttributeBegin
+    Translate 0 0 30
+    Rotate -90 0 1 0
+    Shape "cylinder"
+      "float radius" 2
+      "float zmin" 0
+      "float zmax" 3
+  AttributeEnd
+AttributeEnd
 
 
-
-
-
-
-
-
-
-# SKY and GROUND
+# SKY
 
 LightSource "infinite" "string mapname" "sky.exr"
 
@@ -265,6 +220,8 @@ AttributeEnd
 #  Rotate 250 0 0 1
 #  LightSource "infinite" "string mapname" "kiara_5_noon_8k.exr"
 #AttributeEnd
+
+# GROUND
 
 AttributeBegin
   Rotate 90 1 0 0
