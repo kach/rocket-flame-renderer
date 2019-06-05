@@ -1,0 +1,54 @@
+Film "image"
+  "string filename" ["flame.exr"]
+  "integer xresolution" [320]
+  "integer yresolution" [180]
+
+Sampler "halton" "integer pixelsamples" [256]
+
+Integrator "volpath"
+
+LookAt 3 4 1.5  # eye
+       .5 .5 0  # look at point
+       0 0 1    # up vector
+Camera "perspective" "float fov" 45
+
+
+MakeNamedMedium "flame2"
+  "rgb sigma_a" [ 0.2 0.2 0.2 ]
+  "rgb sigma_s" [ 0.4 0.4 0.4 ]
+  "rgb Le" [500 450 0.0]
+  "string type" "homogeneous"
+
+WorldBegin
+
+
+Include "flame_mat.pbrt"
+MediumInterface "" ""
+
+# uniform blue-ish illumination from all directions
+LightSource "infinite" "rgb L" [.4 .45 .5]
+
+# approximate the sun
+# LightSource "distant"  "point from" [ -30 40  100 ] "blackbody L" [3000 1.5]
+
+AttributeBegin
+  MediumInterface "flame" ""
+  AttributeBegin
+     Material "none"
+     Shape "cylinder" "float radius" 1.0 "float zmin" -1.0 "float zmax" 1.0
+  AttributeEnd
+AttributeEnd
+
+AttributeBegin
+  Texture "checks" "spectrum" "checkerboard"
+          "float uscale" [8] "float vscale" [8]
+          "rgb tex1" [.1 .1 .1] "rgb tex2" [.8 .8 .8]
+  Material "matte" "texture Kd" "checks"
+  Translate 0 0 -1
+  Shape "trianglemesh"
+      "integer indices" [0 1 2 0 2 3]
+      "point P" [ -20 -20 0   20 -20 0   20 20 0   -20 20 0 ]
+      "float st" [ 0 0   1 0    1 1   0 1 ]
+AttributeEnd
+
+WorldEnd
