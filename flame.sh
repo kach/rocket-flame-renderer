@@ -1,2 +1,2 @@
 #!/bin/bash
-python flame.py && pbrt flame.pbrt && imgtool convert flame.exr flame.png && feh flame.png
+../3dfluid/fluid && pbrt flame.pbrt && imgtool convert flame.exr flame.png && feh flame.png

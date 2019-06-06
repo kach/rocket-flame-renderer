@@ -1,16 +1,19 @@
 import numpy as np
-
 import sys
+from solver import vel_step, dens_step
 np.set_printoptions(threshold=sys.maxsize)
 
 h = 10
 u, v, w = (10, 10, 10)
 
-grid = np.zeros((u, v, w))
+density = np.zeros((u, v, w))
 colors = np.zeros((3, u, v, w))
 
 baseColor = (50, 30, 0)
 endColor = (50, 0, 30)
+
+vel_step(N, u, v, u_prev, v_prev, visc, dt)
+dens_step(N, dens, dens_prev, u, v, diff, dt)
 
 def setColor(i,j,k, color):
     for n in range(3):
