@@ -5,7 +5,7 @@ Film "image"
 # "integer xresolution" [960]
 # "integer yresolution" [540]
 
-Sampler "halton" "integer pixelsamples" [128]
+Sampler "halton" "integer pixelsamples" [1024]
 
 Integrator "volpath"
 
@@ -39,11 +39,6 @@ WorldBegin
 #  Translate 0 0 3
 #  Include "rocket-model.pbrt"
 #AttributeEnd
-
-
-
-
-
 
 # Fin template
 ObjectBegin "fin"
@@ -80,7 +75,7 @@ AttributeBegin
 
     AttributeBegin
       Material "none"
-      Shape "cylinder" "float radius" 0.9 "float zmin" -5 "float zmax" 6
+      Shape "cylinder" "float radius" 0.9 "float zmin" -10 "float zmax" 6
       Shape "disk"
 
       AttributeBegin
@@ -91,11 +86,11 @@ AttributeBegin
     AttributeEnd
 
     # the part that glows
-    AttributeBegin
-      AreaLightSource "diffuse" "rgb L" [ 300 90 0 ]
-      ReverseOrientation
-      Shape "cylinder" "float radius" [0.3] "float zmin" [1] "float zmax" [5]
-    AttributeEnd
+    #AttributeBegin
+    #  AreaLightSource "diffuse" "rgb L" [ 300 90 0 ]
+    #  ReverseOrientation
+    #  Shape "cylinder" "float radius" [0.3] "float zmin" [1] "float zmax" [5]
+    #AttributeEnd
   AttributeEnd
 
 # motor retainer
@@ -124,14 +119,6 @@ AttributeBegin
   AttributeEnd
 
 AttributeEnd
-
-
-# TODO awesome volumetric emission flames
-Shape "cylinder"
-  "float radius" [1]
-  "float zmin" [0]
-  "float zmax" [4]
-
 
 
 AttributeBegin
