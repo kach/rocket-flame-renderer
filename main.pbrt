@@ -61,6 +61,7 @@ ObjectEnd
 AttributeBegin
   Material "metal" "spectrum k" [ 1 1 ] "spectrum eta" [ 0.1 0.1 ]
   Translate 0 0 9.8
+  Scale 0.7 0.7 1.3
 
 # airframe
   AttributeBegin
@@ -96,7 +97,7 @@ AttributeBegin
 # motor retainer
   AttributeBegin
     Material "matte" "rgb Kd" [ 1 0 0 ]
-    Shape "disk" "float radius" [1] "float innerradius" [0.2]
+    Shape "disk" "float radius" [1] "float innerradius" [0.4]
   AttributeEnd
 
 # nose cone
