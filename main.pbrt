@@ -5,7 +5,7 @@ Film "image"
   "integer xresolution" [960]
   "integer yresolution" [540]
 
-Sampler "halton" "integer pixelsamples" [16]
+Sampler "halton" "integer pixelsamples" [64]
 
 Integrator "volpath"
 
@@ -122,25 +122,6 @@ AttributeBegin
 AttributeEnd
 
 
-AttributeBegin
-  Translate -1 -1 4
-  Scale 0.2 0.2 0.2
-  Shape "trianglemesh"
-    "point P"
-      [
-        -1 -1 0
-         1 -1 0
-         1  1 0
-        -1  1 0
-      ]
-    "integer indices"
-      [ 0 1 2
-        2 3 0 ]
-AttributeEnd
-
-
-
-
 # HILLS OMG
 
 Include "hill/hill.pbrt"
@@ -211,13 +192,20 @@ AttributeEnd
 
 # GROUND
 
+Include "hill/ground.pbrt"
+
 AttributeBegin
-  Rotate 90 1 0 0
+# Rotate 90 1 0 0
   Material "matte" "rgb Kd" [ .93 .79 .68 ]
 
-  Shape "trianglemesh"
-      "point P" [ -10000 0 -10000  10000 0 -10000  10000 0 10000  -10000 0 10000 ]
-      "integer indices" [ 0 1 2 0 2 3 ]
+  Scale 10000 10000 100
+  Translate -0.5 -0.5 0
+
+  ObjectInstance "ground0"
+
+# Shape "trianglemesh"
+#     "point P" [ -10000 0 -10000  10000 0 -10000  10000 0 10000  -10000 0 10000 ]
+#     "integer indices" [ 0 1 2 0 2 3 ]
 AttributeEnd
 
 WorldEnd
