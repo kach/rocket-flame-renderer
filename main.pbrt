@@ -5,7 +5,7 @@ Film "image"
   "integer xresolution" [960]
   "integer yresolution" [540]
 
-Sampler "halton" "integer pixelsamples" [64]
+Sampler "halton" "integer pixelsamples" [16]
 
 Integrator "volpath"
 
@@ -43,17 +43,12 @@ WorldBegin
 # Fin template
 ObjectBegin "fin"
   AttributeBegin
-    #Material "metal" "spectrum k" [ 1 1 ] "spectrum eta" [ 0.1 0.1 ]
-    Material "matte" "rgb Kd" [ 1 0 0 ]
-    Shape "trianglemesh"
-      "point P" [
-        -0.02 -1 0   -0.02 -2.5 -0.2   -0.02 -1 2.0
-        +0.02 -1 0   +0.02 -2.5 -0.2   +0.02 -1 2.0
-      ]
-      "integer indices" [
-        0 1 2
-        3 4 5
-      ]
+    Material "plastic" "rgb Kd" [ 1 0 0 ] "rgb Ks" [ 0.2 0.2 0.2 ]
+    #Material "matte" "rgb Kd" [ 1 0 0 ]
+    Translate 1 0 0
+    Rotate 90 1 0 0
+    Scale 0.9 0.9 0.9
+    Include "fin.pbrt"
   AttributeEnd
 ObjectEnd
 
@@ -66,7 +61,8 @@ AttributeBegin
 # airframe
   AttributeBegin
     Texture "rocketbody" "spectrum" "imagemap" "string filename" "checkerboard.exr"
-    Material "matte" "texture Kd" "rocketbody"
+    #Material "matte" "texture Kd" "rocketbody"
+    Material "plastic" "texture Kd" "rocketbody" "rgb Ks" [ 0.2 0.2 0.2 ]
     Shape "cylinder" "float radius" [1]   "float zmin" [0] "float zmax" [6]
   AttributeEnd
 
@@ -110,6 +106,7 @@ AttributeBegin
   AttributeEnd
 
 # fins
+  Rotate 90 0 0 1
   AttributeBegin
     Rotate 120 0 0 1
     ObjectInstance "fin"
