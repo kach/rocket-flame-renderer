@@ -1,5 +1,6 @@
 
     ObjectBegin "hill1"
+      Material "matte" "rgb Kd" [ .93 .79 .68 ]
       Shape "heightfield"
         "integer nu" 200
         "integer nv" 200
@@ -10006,6 +10007,7 @@
     ObjectEnd
     
     ObjectBegin "hill2"
+      Material "matte" "rgb Kd" [ .93 .79 .68 ]
       Shape "heightfield"
         "integer nu" 200
         "integer nv" 200
@@ -20012,6 +20014,7 @@
     ObjectEnd
     
     ObjectBegin "hill3"
+      Material "matte" "rgb Kd" [ .93 .79 .68 ]
       Shape "heightfield"
         "integer nu" 200
         "integer nv" 200
