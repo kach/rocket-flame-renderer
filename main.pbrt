@@ -5,7 +5,7 @@ Film "image"
   "integer xresolution" [960]
   "integer yresolution" [540]
 
-Sampler "halton" "integer pixelsamples" [32]
+Sampler "halton" "integer pixelsamples" [4]
 
 Integrator "volpath"
 
@@ -61,14 +61,14 @@ ObjectEnd
 
 ObjectBegin "pebble2"
   AttributeBegin
-    Material "metal" "float roughness" 0.1 "spectrum eta" [ 0.4 0.4 ]
+    Material "metal" "float roughness" 0.1 "spectrum eta" [ 0.6 0.6 ]
     Include "pebble2.pbrt"
   AttributeEnd
 ObjectEnd
 
 ObjectBegin "bunker"
   AttributeBegin
-    Material "metal" "float roughness" 0.2 "spectrum k" [1 1] "spectrum eta" [0.1 0.1]
+    Material "metal" "float roughness" 0.01 "spectrum k" [1 1] "spectrum eta" [0.8 0.8]
     Rotate 90 1 0 0
     Include "bunker.pbrt"
   AttributeEnd
@@ -194,9 +194,9 @@ AttributeBegin
 AttributeEnd
 
 AttributeBegin
+  Translate -1.2 -6.0 2.0
   Rotate 100 0.1 0.5 -1.2
-  Translate 3.0 -6.0 3.0
-  Scale 0.1 0.2 0.1
+  Scale 0.07 0.14 0.07
   ObjectInstance "pebble2"
 AttributeEnd
 
