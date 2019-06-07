@@ -1,11 +1,11 @@
 Film "image"
   "string filename" ["rocket.exr"]
-  "integer xresolution" [320]
-  "integer yresolution" [180]
-# "integer xresolution" [960]
-# "integer yresolution" [540]
+# "integer xresolution" [320]
+# "integer yresolution" [180]
+  "integer xresolution" [960]
+  "integer yresolution" [540]
 
-Sampler "halton" "integer pixelsamples" [4]
+Sampler "halton" "integer pixelsamples" [64]
 
 Integrator "volpath"
 
@@ -62,6 +62,7 @@ ObjectEnd
 ObjectBegin "bunker"
   AttributeBegin
     Material "metal" "float roughness" 0.2 "spectrum k" [1 1] "spectrum eta" [0.1 0.1]
+    Rotate 90 1 0 0
     Include "bunker.pbrt"
   AttributeEnd
 ObjectEnd
@@ -195,7 +196,7 @@ AttributeEnd
 #bunker!
 
 AttributeBegin
-  Translate -30 50 2
+  Translate -30 50 0
   Scale 2 2 2
   ObjectInstance "bunker"
 AttributeEnd
