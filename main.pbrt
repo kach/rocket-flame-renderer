@@ -5,7 +5,7 @@ Film "image"
 # "integer xresolution" [960]
 # "integer yresolution" [540]
 
-Sampler "halton" "integer pixelsamples" [1024]
+Sampler "halton" "integer pixelsamples" [4]
 
 Integrator "volpath"
 
@@ -22,15 +22,15 @@ LookAt
   -2     0  8   # look at this point
   -0.14  0  1   # +Z = "up"
 
-#Camera "perspective"
-#  "float fov" [100]
-#  "float lensradius" [0.1]
-#  "float focaldistance" [10]
+Camera "perspective"
+  "float fov" [100]
+  "float lensradius" [0.1]
+  "float focaldistance" [10]
 
-Camera "realistic"
-  "string lensfile" "fisheye.10mm.dat"
-  "float aperturediameter" [6] # in mm
-  "float focusdistance" [30] # in m
+#Camera "realistic"
+#  "string lensfile" "fisheye.10mm.dat"
+#  "float aperturediameter" [6] # in mm
+#  "float focusdistance" [30] # in m
 
 WorldBegin
 
@@ -49,6 +49,20 @@ ObjectBegin "fin"
     Rotate 90 1 0 0
     Scale 0.9 0.9 0.9
     Include "fin.pbrt"
+  AttributeEnd
+ObjectEnd
+
+ObjectBegin "pebble1"
+  AttributeBegin
+    Material "metal" "float roughness" 0.2
+    Include "pebble1.pbrt"
+  AttributeEnd
+ObjectEnd
+
+ObjectBegin "bunker"
+  AttributeBegin
+    Material "metal" "float roughness" 0.2 "spectrum k" [1 1] "spectrum eta" [0.1 0.1]
+    Include "bunker.pbrt"
   AttributeEnd
 ObjectEnd
 
@@ -150,8 +164,41 @@ AttributeBegin
 AttributeEnd
 
 
+# debris
+AttributeBegin
+  Translate 4 4 4
+  Scale 0.05 0.05 0.05
+  ObjectInstance "pebble1"
+AttributeEnd
 
+AttributeBegin
+  Rotate 90 0.7 0.5 1.2
+  Translate 2 5 6
+  Scale 0.05 0.1 0.09
+  ObjectInstance "pebble1"
+AttributeEnd
 
+AttributeBegin
+  Rotate 30 0.1 0.5 1.2
+  Translate 2.5 3 4.6
+  Scale 0.02 0.06 0.1
+  ObjectInstance "pebble1"
+AttributeEnd
+
+AttributeBegin
+  Rotate 100 0.1 0.5 -1.2
+  Translate 3.0 -6.0 3.0
+  Scale 0.2 0.2 0.03
+  ObjectInstance "pebble1"
+AttributeEnd
+
+#bunker!
+
+AttributeBegin
+  Translate -30 50 2
+  Scale 2 2 2
+  ObjectInstance "bunker"
+AttributeEnd
 
 # WINDSOCK
 
