@@ -1,9 +1,9 @@
 Film "image"
   "string filename" ["rocket.exr"]
-# "integer xresolution" [320]
-# "integer yresolution" [180]
-  "integer xresolution" [960]
-  "integer yresolution" [540]
+  "integer xresolution" [320]
+  "integer yresolution" [180]
+# "integer xresolution" [960]
+# "integer yresolution" [540]
 
 Sampler "halton" "integer pixelsamples" [4]
 
@@ -242,8 +242,8 @@ AttributeBegin
 # Rotate 90 1 0 0
   Material "matte" "rgb Kd" [ .93 .79 .68 ]
 
-  Scale 10000 10000 100
-  Translate -0.5 -0.5 0
+  Scale 2000 2000 500
+  Translate -0.5 -0.5 -50
 
   ObjectInstance "ground0"
 
