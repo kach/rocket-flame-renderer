@@ -22,15 +22,15 @@ LookAt
   -2     0  8   # look at this point
   -0.14  0  1   # +Z = "up"
 
-Camera "perspective"
-  "float fov" [100]
-  "float lensradius" [0.1]
-  "float focaldistance" [10]
+#Camera "perspective"
+#  "float fov" [100]
+#  "float lensradius" [0.1]
+#  "float focaldistance" [10]
 
-#Camera "realistic"
-#  "string lensfile" "fisheye.10mm.dat"
-#  "float aperturediameter" [6] # in mm
-#  "float focusdistance" [30] # in m
+Camera "realistic"
+  "string lensfile" "fisheye.10mm.dat"
+  "float aperturediameter" [6] # in mm
+  "float focusdistance" [30] # in m
 
 WorldBegin
 
