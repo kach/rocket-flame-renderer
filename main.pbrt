@@ -247,17 +247,17 @@ AttributeEnd
 Include "hill/ground.pbrt"
 
 AttributeBegin
-  Rotate 90 1 0 0
+# Rotate 90 1 0 0
   Material "matte" "rgb Kd" [ .93 .79 .68 ]
 
-# Scale 10000 10000 100
-# Translate -0.5 -0.5 0
+  Scale 2000 2000 10
+  Translate -0.5 -0.5 0
 
-# ObjectInstance "ground0"
+  ObjectInstance "ground0"
 
-  Shape "trianglemesh"
-      "point P" [ -10000 0 -10000  10000 0 -10000  10000 0 10000  -10000 0 10000 ]
-      "integer indices" [ 0 1 2 0 2 3 ]
+# Shape "trianglemesh"
+#     "point P" [ -10000 0 -10000  10000 0 -10000  10000 0 10000  -10000 0 10000 ]
+#     "integer indices" [ 0 1 2 0 2 3 ]
 AttributeEnd
 
 WorldEnd
